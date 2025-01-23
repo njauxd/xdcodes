@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="Login-form.css">
+</head>
+<body>
+ 
+  <section class="form">
+    <header class="header">
+      <h2>LOGIN</h2>
+    </header>
+    <form class="login-form">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit" class="btn">Login</button>
+      </div>
+    </form>
+  </section>
+
+  <script>
+    const form = document.querySelector('.login-form');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = form.name.value;
+      const email = form.email.value;
+      const password = form.password.value;
+      console.log(name, email, password);
+    });
+
+    const btn = document.querySelector('.btn');
+    btn.addEventListener('click', () => {
+      alert('Login Not successful')
+      console.error('Login Not successful');
+    });
+
+
+  const showError = (message) => {
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'error-message';
+    errorDiv.textContent = message;
+    form.appendChild(errorDiv);
+  };
+
+  
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const password = form.password.value.trim();
+
+    // Clear previous error messages
+    const previousError = document.querySelector('.error-message');
+    if (previousError) {
+    previousError.remove();
+    }
+
+    if (!name || !email || !password) {
+    showError('All fields are required.');
+    return;
+    }
+
+    // Add more validation checks as needed
+    console.log(name, email, password);
+  });
+
+  
+  </script>
+ </body>
+ </html>
